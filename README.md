@@ -22,14 +22,14 @@ If you are looking for “a working SDXL alternative” or a clean training stac
 
 ## This checkpoint often needs longer / more specific prompts to noticeably change structure (known limitation).
 
-<img width="2559" height="1261" alt="image" src="https://github.com/user-attachments/assets/107818ee-df3a-4cb7-85cf-6229f9983bde" />
+![Screenshot 2026-04-01 193854](https://github.com/user-attachments/assets/e73dbedc-bf78-4872-85a5-57b8a50a87e8)
 
 Here is a comparision between using a short and long prompt
 The prompt for the first image was "butterflyer, butterflies, butterflylike, butterfly, browntail, brownwort" and the prompt for the second image was "butterflyer, butterflies, butterflylike, butterfly, browntail, brownwort, microlepidopteran, microlepidopterous, bugwort, butterflying, butterwort, mariposas, lepidopteran, lepidopterous, beetleweed, featherleaf, leafhopper, leafhoppers, nutbrown, throatwort"
 
 note the model has a bias for generating prompts that may result in blue or green areas, and it might struggle with other scenes even with similar quality prompts
 
-<img width="1280" height="670" alt="image" src="https://github.com/user-attachments/assets/75265e07-7cf4-438f-a61f-618c9c19fb68" />
+![Screenshot 2026-04-01 193556](https://github.com/user-attachments/assets/5077a522-506e-44ee-bd67-9c039daebda2)
 
 EXAMPLE OF THIS BIAS
 
@@ -116,7 +116,9 @@ was pre trained on a small sample of image net
 
 That is only contained 256x256 753,088 image text pairs or 376,544 image only samples and all of then where exatctly 256x256. It was trained for 5 epochs using the following arguments
 
-"python -u test_dataset_generalization.py --data-dir "C:\Users\chatr\Pictures\aaa\imagenet-1k-256x256\CaptinedIMGNET" --cache-dir "C:\Users\chatr\Documents\Tech\VLLM\New folder\.latent_cache" --batch-size 1 --lr 2e-4 --weight-decay 0.01 --adam-beta1 0.9 --adam-beta2 0.999 --adam-eps 1e-8 --max-size 256 --grad-accum-steps 8 --d-model 768 --n-heads 12 --n-layers 12 --warmup-steps 900 --text-pooling attn --pooled-text-scale 1.0 --pooled-text-dropout 0.1 --output-name IMAGENET_FIXED --save-every 1000 --epochs 5 --max-steps 0 --lambda-img 1.0 --alpha-ntp 0.5 --alpha-ntp-text-only 1.0 --workers 0 --graph-batch-size 1 --ema-every 8 --prefetch-factor 2 --log-every 10 --parallel-encode --grad-checkpointing --context-pack --max-context-length 4096 --image-ratio 0.5"
+```
+python -u test_dataset_generalization.py --data-dir "C:\Users\chatr\Pictures\aaa\imagenet-1k-256x256\CaptinedIMGNET" --cache-dir "C:\Users\chatr\Documents\Tech\VLLM\New folder\.latent_cache" --batch-size 1 --lr 2e-4 --weight-decay 0.01 --adam-beta1 0.9 --adam-beta2 0.999 --adam-eps 1e-8 --max-size 256 --grad-accum-steps 8 --d-model 768 --n-heads 12 --n-layers 12 --warmup-steps 900 --text-pooling attn --pooled-text-scale 1.0 --pooled-text-dropout 0.1 --output-name IMAGENET_FIXED --save-every 1000 --epochs 5 --max-steps 0 --lambda-img 1.0 --alpha-ntp 0.5 --alpha-ntp-text-only 1.0 --workers 0 --graph-batch-size 1 --ema-every 8 --prefetch-factor 2 --log-every 10 --parallel-encode --grad-checkpointing --context-pack --max-context-length 4096 --image-ratio 0.5
+```
 
 ## Offline Mode (No Hugging Face Network Calls)
 
